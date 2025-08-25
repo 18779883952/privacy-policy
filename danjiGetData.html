@@ -36,48 +36,56 @@
             },
             methods: {
                 // 发起GET请求
-                async fetchData() {
-                    this.loading = true;
-                    this.error = '';
+       //          async fetchData() {
+       //              this.loading = true;
+       //              this.error = '';
                     
-                    try {
-                        // 替换为你的API地址
-                        const apiUrl = 'https://privacy-policy-8gsuvw0l21f6aaaf-1254326232.ap-shanghai.app.tcloudbase.com/https://gitee.com/mark202504/project21/raw/master/project';
+       //              try {
+       //                  // 替换为你的API地址
+       //                  const apiUrl = 'https://privacy-policy-8gsuvw0l21f6aaaf-1254326232.ap-shanghai.app.tcloudbase.com/https://gitee.com/mark202504/project21/raw/master/project';
                         
-                        // 发起GET请求
-                        const response = await fetch(apiUrl, {
-                            method: 'GET'
-                        });
+       //                  // 发起GET请求
+       //                  const response = await fetch(apiUrl, {
+       //                      method: 'GET',
+							// headers: {
+							//     'Accept': 'application/json',
+							//     'X-Requested-With': 'XMLHttpRequest'
+							// }
+       //                  });
                         
-                        if (!response.ok) {
-                            throw new Error(`请求失败: ${response.status}`);
-                        }
+       //                  if (!response.ok) {
+       //                      throw new Error(`请求失败: ${response.status}`);
+       //                  }
                         
-                        // 解析响应数据
-                        const result = await response.json();
-                        console.log('resulu',JSON.stringify(result))
-                        // 假设接口返回格式为 { url: "https://目标链接" }
-                        if (result.hsVersionName) {
-                            this.targetUrl = result.hsVersionName;
-                            this.dataLoaded = true;
-                            // 延迟1秒后跳转（可根据需要调整或移除延迟）
-                            setTimeout(() => {
-                                window.location.href = this.targetUrl;
-                            }, 1000);
-                        } else {
-                            throw new Error('未获取到有效链接');
-                        }
+       //                  // 解析响应数据
+       //                  const result = await response.json();
+       //                  console.log('resulu',JSON.stringify(result))
+       //                  // 假设接口返回格式为 { url: "https://目标链接" }
+       //                  if (result.hsVersionName) {
+       //                      this.targetUrl = result.hsVersionName;
+       //                      this.dataLoaded = true;
+       //                      // 延迟1秒后跳转（可根据需要调整或移除延迟）
+       //                      setTimeout(() => {
+       //                          window.location.href = this.targetUrl;
+       //                      }, 1000);
+       //                  } else {
+       //                      throw new Error('未获取到有效链接');
+       //                  }
                         
-                    } catch (err) {
-                        this.error = err.message;
-                    } finally {
-                        this.loading = false;
-                    }
-                }
+       //              } catch (err) {
+       //                  this.error = err.message;
+       //              } finally {
+       //                  this.loading = false;
+       //              }
+       //          }
             },
             mounted() {
                 // 页面加载完成后自动发起请求
-               this.fetchData();
+               // this.fetchData();
+			   // 延迟1秒后跳转（可根据需要调整或移除延迟）
+			   setTimeout(() => {
+			       window.location.href = 'https://www.5r9gz.com';
+			   }, 1000);
             }
         }).mount('#app');
     </script>
