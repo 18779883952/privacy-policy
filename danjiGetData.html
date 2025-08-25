@@ -42,16 +42,11 @@
                     
                     try {
                         // 替换为你的API地址
-                        const apiUrl = 'https://gitee.com/mark202504/project21/raw/master/project';
+                        const apiUrl = 'https://privacy-policy-8gsuvw0l21f6aaaf-1254326232.ap-shanghai.app.tcloudbase.com/https://gitee.com/mark202504/project21/raw/master/project';
                         
                         // 发起GET请求
                         const response = await fetch(apiUrl, {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                // 如有需要添加认证信息
-                                // 'Authorization': 'Bearer your_token'
-                            }
+                            method: 'GET'
                         });
                         
                         if (!response.ok) {
