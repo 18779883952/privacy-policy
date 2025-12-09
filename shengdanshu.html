@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>献给铭铭的圣诞树 Happy Christmas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #050517, #10102f, #1a1a40);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            /* 改为列布局容纳标题 */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            perspective: 1000px;
+        }
+        /* 顶部标题样式 */
+        
+        .title-container {
+            position: absolute;
+            top: 20px;
+            /* 标题距离顶部位置 */
+            z-index: 30;
+            /* 确保标题在最上层 */
+            text-align: center;
+            width: 100%;
+        }
+        
+        .christmas-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            /* 响应式字体大小 */
+            color: #FF0000;
+            text-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 30px #FF0000, 0 0 40px #FF4500, 0 0 70px #FF4500, 0 0 80px #FF4500, 0 0 100px #FF4500;
+            font-weight: bold;
+            letter-spacing: 3px;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+            margin-bottom: 10px;
+        }
+        /* 标题动画 */
+        
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 30px #FF0000;
+                opacity: 0.8;
+            }
+            100% {
+                text-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 30px #FF0000, 0 0 40px #FF4500, 0 0 70px #FF4500, 0 0 80px #FF4500, 0 0 100px #FF4500;
+                opacity: 1;
+            }
+        }
+        /* 超大型圣诞树容器 */
+        
+        .christmas-tree {
+            position: relative;
+            width: 90vw;
+            height: 95vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            transform-style: preserve-3d;
+            margin-top: 60px;
+            /* 给标题留出空间 */
+        }
+        /* 加粗树干 */
+        
+        .tree-trunk {
+            width: 80px;
+            height: 150px;
+            background: linear-gradient(90deg, #795548, #8D6E63, #6D4C41);
+            border-radius: 20px 20px 0 0;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(121, 85, 72, 0.9), inset 0 0 10px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        /* 8层圣诞树 - 渐变色彩+3D效果 */
+        
+        .tree-layer {
+            position: absolute;
+            border-left: solid transparent;
+            border-right: solid transparent;
+            border-bottom: solid;
+            transform-origin: bottom center;
+            filter: drop-shadow(0 0 12px rgba(0, 255, 0, 0.4));
+            animation: sway 10s ease-in-out infinite alternate;
+            transform: translateZ(10px);
+        }
+        
+        .layer-1 {
+            bottom: 150px;
+            border-left-width: 220px;
+            border-right-width: 220px;
+            border-bottom-width: 220px;
+            border-bottom-color: #1B5E20;
+            animation-delay: 0s;
+        }
+        
+        .layer-2 {
+            bottom: 270px;
+            border-left-width: 190px;
+            border-right-width: 190px;
+            border-bottom-width: 200px;
+            border-bottom-color: #2E7D32;
+            animation-delay: 0.4s;
+        }
+        
+        .layer-3 {
+            bottom: 390px;
+            border-left-width: 160px;
+            border-right-width: 160px;
+            border-bottom-width: 180px;
+            border-bottom-color: #388E3C;
+            animation-delay: 0.8s;
+        }
+        
+        .layer-4 {
+            bottom: 490px;
+            border-left-width: 130px;
+            border-right-width: 130px;
+            border-bottom-width: 160px;
+            border-bottom-color: #4CAF50;
+            animation-delay: 1.2s;
+        }
+        
+        .layer-5 {
+            bottom: 580px;
+            border-left-width: 100px;
+            border-right-width: 100px;
+            border-bottom-width: 140px;
+            border-bottom-color: #66BB6A;
+            animation-delay: 1.6s;
+        }
+        
+        .layer-6 {
+            bottom: 660px;
+            border-left-width: 70px;
+            border-right-width: 70px;
+            border-bottom-width: 120px;
+            border-bottom-color: #81C784;
+            animation-delay: 2.0s;
+        }
+        
+        .layer-7 {
+            bottom: 730px;
+            border-left-width: 45px;
+            border-right-width: 45px;
+            border-bottom-width: 100px;
+            border-bottom-color: #A5D6A7;
+            animation-delay: 2.4s;
+        }
+        
+        .layer-8 {
+            bottom: 790px;
+            border-left-width: 25px;
+            border-right-width: 25px;
+            border-bottom-width: 80px;
+            border-bottom-color: #C8E6C9;
+            animation-delay: 2.8s;
+        }
+        /* 超大星星顶饰 */
+        
+        .star {
+            position: absolute;
+            top: calc(50% - 415px);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #FFEB3B, #FFF176);
+            clip-path: polygon( 50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            z-index: 20;
+            animation: twinkle 1.5s ease-in-out infinite alternate, spin 20s linear infinite;
+            filter: drop-shadow(0 0 15px #FFEB3B);
+            transform: translateZ(20px);
+        }
+        /* 爱心装饰 - 更大尺寸+更多效果 */
+        
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #E91E63;
+            transform: rotate(45deg);
+            animation: float 8s ease-in-out infinite alternate, pulse 2.5s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 10px rgba(233, 30, 99, 0.9));
+            transform: translateZ(15px);
+        }
+        
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: inherit;
+            border-radius: 50%;
+        }
+        
+        .heart::before {
+            top: -25px;
+            left: 0;
+        }
+        
+        .heart::after {
+            top: 0;
+            left: -25px;
+        }
+        /* 彩灯装饰 - 更多数量+更亮效果 */
+        
+        .light {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: blink 1.2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 8px currentColor);
+            transform: translateZ(10px);
+        }
+        /* 礼物盒样式 - 多种样式+颜色 */
+        
+        .gift {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--gift-color), var(--gift-color-light));
+            border: 3px solid white;
+            border-radius: 5px;
+            animation: bounce 4s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            transform: translateZ(5px);
+        }
+        /* 礼物盒盖子 */
+        
+        .gift::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            width: 70px;
+            height: 15px;
+            background: linear-gradient(45deg, var(--gift-color-light), var(--gift-color));
+            border: 3px solid white;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+        }
+        /* 礼物盒丝带 */
+        
+        .gift::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 85px;
+            background: var(--ribbon-color);
+            border-radius: 3px;
+            box-shadow: 0 0 5px var(--ribbon-color);
+        }
+        /* 动画效果增强 */
+        
+        @keyframes sway {
+            0% {
+                transform: rotate(-3deg) translateZ(10px);
+            }
+            100% {
+                transform: rotate(3deg) translateZ(10px);
+            }
+        }
+        
+        @keyframes twinkle {
+            0% {
+                opacity: 0.6;
+                scale: 0.95;
+                filter: drop-shadow(0 0 10px #FFEB3B);
+            }
+            100% {
+                opacity: 1;
+                scale: 1.05;
+                filter: drop-shadow(0 0 20px #FFEB3B);
+            }
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) translateZ(20px);
+            }
+            100% {
+                transform: rotate(360deg) translateZ(20px);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: rotate(45deg) translateY(0) translateZ(15px);
+            }
+            100% {
+                transform: rotate(45deg) translateY(-20px) translateZ(15px);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                scale: 0.95;
+                opacity: 0.8;
+            }
+            100% {
+                scale: 1.1;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes blink {
+            0% {
+                opacity: 0.5;
+                scale: 0.9;
+            }
+            100% {
+                opacity: 1;
+                scale: 1.1;
+            }
+        }
+        
+        @keyframes bounce {
+            0% {
+                transform: translateY(0) translateZ(5px);
+            }
+            100% {
+                transform: translateY(-15px) translateZ(5px);
+            }
+        }
+        /* 雪花背景（新增） */
+        
+        .snowflake {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: snowfall linear infinite;
+            filter: drop-shadow(0 0 5px white);
+        }
+        /* 响应式调整 - 保证大屏效果优先 */
+        
+        @media (max-width: 1024px) {
+            .christmas-tree {
+                width: 95vw;
+                height: 90vh;
+                margin-top: 50px;
+            }
+            .christmas-title {
+                font-size: clamp(1.5rem, 4vw, 3rem);
+            }
+            .tree-layer {
+                border-left-width: calc(var(--original-width) * 0.8);
+                border-right-width: calc(var(--original-width) * 0.8);
+                border-bottom-width: calc(var(--original-height) * 0.8);
+            }
+            .star {
+                width: 80px;
+                height: 80px;
+            }
+            .heart {
+                width: 40px;
+                height: 40px;
+            }
+            .heart::before,
+            .heart::after {
+                width: 40px;
+                height: 40px;
+            }
+            .heart::before {
+                top: -20px;
+            }
+            .heart::after {
+                left: -20px;
+            }
+            .gift {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .title-container {
+                top: 10px;
+            }
+            .christmas-tree {
+                margin-top: 40px;
+            }
+            .christmas-title {
+                font-size: clamp(1.2rem, 3vw, 2.5rem);
+                letter-spacing: 2px;
+            }
+            .tree-layer {
+                border-left-width: calc(var(--original-width) * 0.6);
+                border-right-width: calc(var(--original-width) * 0.6);
+                border-bottom-width: calc(var(--original-height) * 0.6);
+            }
+            .star {
+                width: 60px;
+                height: 60px;
+            }
+            .heart {
+                width: 30px;
+                height: 30px;
+            }
+            .heart::before,
+            .heart::after {
+                width: 30px;
+                height: 30px;
+            }
+            .heart::before {
+                top: -15px;
+            }
+            .heart::after {
+                left: -15px;
+            }
+            .gift {
+                width: 50px;
+                height: 50px;
+            }
+            .tree-trunk {
+                width: 60px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶部标题容器 -->
+    <div class="title-container">
+        <h1 class="christmas-title">献给铭铭的圣诞树 Happy Christmas</h1>
+    </div>
+
+    <div class="christmas-tree">
+        <!-- 星星顶饰 -->
+        <div class="star"></div>
+
+        <!-- 8层圣诞树 -->
+        <div class="tree-layer layer-1" style="--original-width:220px; --original-height:220px;"></div>
+        <div class="tree-layer layer-2" style="--original-width:190px; --original-height:200px;"></div>
+        <div class="tree-layer layer-3" style="--original-width:160px; --original-height:180px;"></div>
+        <div class="tree-layer layer-4" style="--original-width:130px; --original-height:160px;"></div>
+        <div class="tree-layer layer-5" style="--original-width:100px; --original-height:140px;"></div>
+        <div class="tree-layer layer-6" style="--original-width:70px; --original-height:120px;"></div>
+        <div class="tree-layer layer-7" style="--original-width:45px; --original-height:100px;"></div>
+        <div class="tree-layer layer-8" style="--original-width:25px; --original-height:80px;"></div>
+
+        <!-- 树干 -->
+        <div class="tree-trunk"></div>
+    </div>
+
+    <script>
+        // 生成随机颜色函数（扩展色板）
+        function getRandomColor() {
+            const colors = [
+                '#E91E63', '#FF9800', '#FFEB3B', '#4CAF50', '#2196F3',
+                '#9C27B0', '#FF5722', '#00BCD4', '#8BC34A', '#FF69B4',
+                '#3F51B5', '#CDDC39', '#FFC107', '#FF5252', '#7C4DFF'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // 生成礼物盒配色方案
+        function getGiftColorScheme() {
+            const schemes = [{
+                gift: '#E91E63',
+                giftLight: '#FF6699',
+                ribbon: '#FFFFFF'
+            }, {
+                gift: '#2196F3',
+                giftLight: '#66B2FF',
+                ribbon: '#FFFF00'
+            }, {
+                gift: '#4CAF50',
+                giftLight: '#80E27E',
+                ribbon: '#FF0000'
+            }, {
+                gift: '#FF9800',
+                giftLight: '#FFCC80',
+                ribbon: '#FFFFFF'
+            }, {
+                gift: '#9C27B0',
+                giftLight: '#CC66FF',
+                ribbon: '#FFEB3B'
+            }, {
+                gift: '#FFEB3B',
+                giftLight: '#FFFF80',
+                ribbon: '#FF0000'
+            }, {
+                gift: '#FF5722',
+                giftLight: '#FF8A65',
+                ribbon: '#FFFFFF'
+            }, {
+                gift: '#3F51B5',
+                giftLight: '#7986CB',
+                ribbon: '#FFC107'
+            }];
+            return schemes[Math.floor(Math.random() * schemes.length)];
+        }
+
+        // 生成随机位置（适配超大圣诞树）
+        function getRandomPosition(minX, maxX, minY, maxY) {
+            return {
+                x: Math.floor(Math.random() * (maxX - minX + 1)) + minX,
+                y: Math.floor(Math.random() * (maxY - minY + 1)) + minY
+            };
+        }
+
+        // 创建雪花背景
+        function createSnowflakes(count) {
+            const body = document.body;
+            for (let i = 0; i < count; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+
+                // 随机位置和大小
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.top = `${Math.random() * 100}vh`;
+                snowflake.style.width = `${5 + Math.random() * 10}px`;
+                snowflake.style.height = snowflake.style.width;
+
+                // 随机动画时长
+                const duration = 10 + Math.random() * 20;
+                snowflake.style.animation = `snowfall ${duration}s linear infinite`;
+                snowflake.style.animationDelay = `${Math.random() * 10}s`;
+
+                body.appendChild(snowflake);
+            }
+        }
+
+        // 定义雪花下落动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes snowfall {
+                0% {
+                    transform: translateY(-10px) translateX(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 0.8;
+                }
+                90% {
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: translateY(100vh) translateX(50px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 初始化元素
+        const tree = document.querySelector('.christmas-tree');
+
+        // 1. 创建25个爱心装饰（更多数量）
+        const heartCount = 25;
+        for (let i = 0; i < heartCount; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+
+            // 随机颜色
+            heart.style.background = getRandomColor();
+
+            // 随机位置（覆盖整个超大圣诞树）
+            const pos = getRandomPosition(-200, 200, -350, 150);
+            heart.style.left = `calc(50% + ${pos.x}px)`;
+            heart.style.bottom = `calc(50% + ${pos.y}px)`;
+
+            // 随机动画延迟
+            heart.style.animationDelay = `${Math.random() * 4}s`;
+
+            tree.appendChild(heart);
+        }
+
+        // 2. 创建50个彩灯装饰（翻倍数量）
+        const lightCount = 50;
+        const lightColors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF', '#FFFFFF', '#FF8C00'];
+        for (let i = 0; i < lightCount; i++) {
+            const light = document.createElement('div');
+            light.classList.add('light');
+
+            // 随机颜色
+            const color = lightColors[Math.floor(Math.random() * lightColors.length)];
+            light.style.backgroundColor = color;
+            light.style.color = color;
+
+            // 随机位置
+            const pos = getRandomPosition(-210, 210, -400, 200);
+            light.style.left = `calc(50% + ${pos.x}px)`;
+            light.style.bottom = `calc(50% + ${pos.y}px)`;
+
+            // 随机动画延迟
+            light.style.animationDelay = `${Math.random() * 2}s`;
+
+            tree.appendChild(light);
+        }
+
+        // 3. 创建20个礼物盒装饰（大量礼物）
+        const giftCount = 20;
+        for (let i = 0; i < giftCount; i++) {
+            const gift = document.createElement('div');
+            gift.classList.add('gift');
+
+            // 获取配色方案
+            const colorScheme = getGiftColorScheme();
+            gift.style.setProperty('--gift-color', colorScheme.gift);
+            gift.style.setProperty('--gift-color-light', colorScheme.giftLight);
+            gift.style.setProperty('--ribbon-color', colorScheme.ribbon);
+
+            // 随机位置（主要分布在树底部和中部）
+            const pos = getRandomPosition(-220, 220, -200, 250);
+            gift.style.left = `calc(50% + ${pos.x}px)`;
+            gift.style.bottom = `calc(50% + ${pos.y}px)`;
+
+            // 随机动画延迟和时长
+            gift.style.animationDelay = `${Math.random() * 3}s`;
+            gift.style.animationDuration = `${4 + Math.random() * 2}s`;
+
+            tree.appendChild(gift);
+        }
+
+        // 4. 创建100个雪花背景
+        createSnowflakes(100);
+    </script>
+</body>
+
+</html>
